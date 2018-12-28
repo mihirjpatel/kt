@@ -1,0 +1,55 @@
+{
+    "builders": [
+        {
+            "type": "amazon-ebs",
+            "access_key": "{{user `aws_access_key`}}",
+            "secret_key": "{{user `aws_secret_key`}}",
+            "region": "{{user `aws_region`}}",
+            "source_ami": "{{user `aws_ami_id`}}",
+            "instance_type": "{{user `aws_instance_type`}}",
+            "ssh_username": "ubuntu",
+            "ami_name": "jira-ami-{{timestamp}}",
+            "subnet_id": "{{user `aws_subnet_id`}}",
+            "associate_public_ip_address": true
+            }
+        ],
+        "provisioners": [
+            {
+                "type": "file",
+                "source": "./scripts/jira-configuration-files",
+                "destination": "/home/ubuntu"
+            },
+            {
+                "type": "shell",
+                "scripts": [
+                    "./scripts/install-git.sh",
+                    "./scripts/install-aws-efs-util.sh",
+                    "./scripts/install-awscli.sh",
+                    "./scripts/persist-efs-mount.sh",
+                    "./scripts/add-dc-hostname-entry.sh"
+                ],
+                "expect_disconnect": true
+            },
+            {
+                "type": "shell",
+                "inline": [
+                    "sudo apt-get update",
+                    "sudo apt-get -y upgrade"
+                ]
+            },
+            {
+                "type": "shell",
+                "inline": "sudo reboot",
+                "expect_disconnect": true
+            },
+            {
+                "type": "shell",
+                "inline": "echo 'Reboot Completed'",
+                "pause_before": "30s"
+            },
+            {
+                "type": "shell",
+                "script": "./scripts/install-jira.sh"
+            }
+        ]
+    }

@@ -1,0 +1,10 @@
+{
+    "zone": "us-east4-b",
+    "network": "vpc-1",
+    "subnetwork": "infra-subnet-1",
+    "source_image": "ubuntu-1604-xenial-v20180814",
+    "service_account_email": "terraform@p-artnet-terraform-admin.iam.gserviceaccount.com",
+    "project_id": "p-internal-infra-01-f0514f",
+    "image_name": "atlassian-confluence-7-12-1-packer",
+    "base_url":"info.artnet.support"
+}

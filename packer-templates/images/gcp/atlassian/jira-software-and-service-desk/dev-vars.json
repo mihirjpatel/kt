@@ -1,0 +1,10 @@
+{
+    "zone": "us-east4-b",
+    "network": "vpc-1",
+    "subnetwork": "infra-subnet-1",
+    "source_image": "ubuntu-1604-xenial-v20180814",
+    "service_account_email": "terraform@artnet-terraform-admin.iam.gserviceaccount.com",
+    "project_id": "d-internal-infra-01-fb5651",
+    "image_name": "atlassian-jira-7-12-1-packer",
+    "base_url": "help.artnet-dev.com"
+}

@@ -1,0 +1,10 @@
+# install4j response file for Confluence 6.9.0
+app.confHome=/efs/atlassian/confluence
+app.install.service$Boolean=true
+existingInstallationDir=/usr/local/Confluence
+launch.application$Boolean=true
+portChoice=default
+sys.adminRights$Boolean=true
+sys.confirmedUpdateInstallationString=false
+sys.installationDir=/opt/atlassian/confluence
+sys.languageId=en

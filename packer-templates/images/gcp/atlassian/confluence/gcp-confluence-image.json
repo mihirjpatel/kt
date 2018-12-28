@@ -1,0 +1,39 @@
+{
+    "builders": [
+        {
+          "type": "googlecompute",
+          "service_account_email": "{{user `service-account-email`}}",
+          "project_id": "{{user `project_id`}}",
+          "source_image": "ubuntu-1604-xenial-v20180814",
+          "image_name": "{{user `image_name`}}-{{timestamp}}",
+          "ssh_username": "packer",
+          "zone": "{{user `zone`}}",
+          "network":"{{user `network`}}",
+          "subnetwork":"{{user `subnetwork`}}"
+        }
+      ],
+        "provisioners": [
+            {
+                "type": "file",
+                "source": "./scripts/confluence-configuration-files",
+                "destination": "/home/packer"
+            },
+            {
+                "type": "shell",
+                "inline": ["sudo sed -i -e 's/127.0.0.1 localhost/127.0.0.1 localhost {{user `base_url`}}/g' /etc/hosts"]
+              },
+            {
+                "type": "shell",
+                "scripts": [
+                    "./scripts/install-git.sh",
+                    "./scripts/install-default-jre.sh",
+                    "./scripts/add-hostfile-entry.sh"
+                ],
+                "expect_disconnect": true
+            },
+            {
+                "type": "shell",
+                "script": "./scripts/install-confluence.sh"
+            }
+        ]
+    }
