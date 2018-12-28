@@ -1,0 +1,7 @@
+
+gcloud compute instances detach-disk d-atlassian-jira --disk=d-jira-ssd-pd-01
+gcloud compute disks delete d-jira-ssd-pd-01
+
+
+gcloud compute disks create d-jira-ssd-pd-01 --image-project=p-atlassian-02-99df2d --source-snapshot=https://www.googleapis.com/compute/v1/projects/p-atlassian-02-99df2d/global/snapshots/p-jira-ssd-pd-01-snapshot-3
+

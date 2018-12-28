@@ -1,0 +1,78 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusterName": {
+            "value": "sf01"
+        },
+        "clusterLocation": {
+            "value": "eastus"
+        },
+        "computeLocation": {
+            "value": "eastus"
+        },
+        "adminUserName": {
+            "value": "artnetadmin"
+        },
+        "adminPassword": {
+            "value": null
+        },
+        "nicName": {
+            "value": "NIC-sf01"
+        },
+        "publicIPAddressName": {
+            "value": "sf01-PubIP"
+        },
+        "dnsName": {
+            "value": "sf01"
+        },
+        "virtualNetworkName": {
+            "value": "VNet-sf01"
+        },
+        "lbName": {
+            "value": "LB-sf01"
+        },
+        "lbIPName": {
+            "value": "LBIP-sf01"
+        },
+        "applicationDiagnosticsStorageAccountName": {
+            "value": "sfdgsf016154"
+        },
+        "supportLogStorageAccountName": {
+            "value": "sflogssf014464"
+        },
+        "sourceVaultValue": {
+            "value": "/subscriptions/08346c6c-bd12-45ad-8717-ba1c28f94648/resourceGroups/rg-keyvault-green/providers/Microsoft.KeyVault/vaults/key-vault-green"
+        },
+        "certificateUrlValue": {
+            "value": "https://key-vault-green.vault.azure.net/secrets/STAR-azure-artnet-com-cert-for-SF/da1b27f026634ce88bfcfdda06667b7d"
+        },
+        "certificateThumbprint": {
+            "value": "A297E948D5D1B6E99E2D47FDB95C29516971CC60"
+        },
+        "vmImageSku": {
+            "value": "2016-Datacenter-with-Containers"
+        },
+        "nt0ephemeralStartPort": {
+            "value": 49152
+        },
+        "nt0ephemeralEndPort": {
+            "value": 65534
+        },
+        "nt0applicationStartPort": {
+            "value": 20000
+        },
+        "nt0applicationEndPort": {
+            "value": 30000
+        },
+        "nt0fabricTcpGatewayPort": {
+            "value": 19000
+        },
+        "nt0fabricHttpGatewayPort": {
+            "value": 19080
+        },
+        "nt0reverseProxyEndpointPort": {
+            "value": 19081
+        }
+    }
+}

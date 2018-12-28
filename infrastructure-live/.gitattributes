@@ -1,0 +1,11 @@
+# http://adaptivepatchwork.com/2012/03/01/mind-the-end-of-your-line/
+
+*.md                text eol=input
+*.tf                text eol=input
+*.json              text eol=input
+*.sh                text eol=input
+*.ps1               text eol=input
+*.xml               text eol=input
+*.text              text eol=input
+
+*.dll               -text

@@ -1,0 +1,87 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "clusterLocation": {
+      "value": "eastus"
+    },
+    "clusterName": {
+      "value": "sf01"
+    },
+    "adminUserName": {
+      "value": "artnetadmin"
+    },
+    "adminPassword": {
+      "value": "XR@Nj@2nHyA8"
+    },
+    "vmImagePublisher": {
+      "value": "MicrosoftWindowsServer"
+    },
+    "vmImageOffer": {
+      "value": "WindowsServer"
+    },
+    "vmImageSku": {
+      "value": "2016-Datacenter-with-Containers"
+    },
+    "vmImageVersion": {
+      "value": "latest"
+    },
+    "loadBalancedAppPort1": {
+      "value": 80
+    },
+    "loadBalancedAppPort2": {
+      "value": 443
+    },
+    "clusterProtectionLevel": {
+      "value": "EncryptAndSign"
+    },
+    "certificateStoreValue": {
+      "value": "My"
+    },
+    "certificateThumbprint": {
+      "value": "A297E948D5D1B6E99E2D47FDB95C29516971CC60"
+    },
+    "sourceVaultValue": {
+      "value": "/subscriptions/08346c6c-bd12-45ad-8717-ba1c28f94648/resourceGroups/rg-keyvault-green/providers/Microsoft.KeyVault/vaults/key-vault-green"
+    },
+    "certificateUrlValue": {
+      "value": "https://key-vault-green.vault.azure.net/secrets/STAR-azure-artnet-com-cert-for-SF/da1b27f026634ce88bfcfdda06667b7d"
+    },
+    "storageAccountType": {
+      "value": "Standard_LRS"
+    },
+    "supportLogStorageAccountType": {
+      "value": "Standard_LRS"
+    },
+    "applicationDiagnosticsStorageAccountType": {
+      "value": "Standard_LRS"
+    },
+    "nt0InstanceCount": {
+      "value": 5
+    },
+    "vmNodeType0Size": {
+      "value": "Standard_D2_V2"
+    },
+    "existingVNetRGName": {
+      "value": "rg-vnet-green"
+    },
+    "existingVNetName": {
+      "value": "vnet-green"
+    },
+    "existingVNetExistingSubnetName": {
+      "value": "subnet-backend"
+    },
+    "existingVNetExistingSubnetNamePrefix": {
+      "value": "10.20.2.0/24"
+    },
+    "aadTenantId": {
+      "value": "f99ef0be-7868-495e-b90c-12dee38c1fdc"
+    },
+    "aadClusterApplicationId": {
+      "value": "2e10eaac-fed8-4b8c-9797-665a4e4f9b24"
+    },
+    "aadClientApplicationId": {
+      "value": "298408fc-89a3-4986-9585-707b8c902938"
+    }
+  }
+}
