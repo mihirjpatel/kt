@@ -1,0 +1,38 @@
+#!/bin/bash
+# Refreshes deployment processes so that they point to the newly provisioned shared core project
+
+set -eu
+
+
+SHARED_SCRIPTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd ../../../shared_scripts && pwd)"
+SET_ENV_SCRIPT_PATH="$SHARED_SCRIPTS_DIR/set_circleci_env_variable.py"
+
+# Applications refer to _PROD
+if [ "$ENV" == "PRD" ]; then
+    ENV="PROD"
+fi
+
+# Artnet.Pilot
+export GITHUB_REPO=artnet-pilot
+"$SET_ENV_SCRIPT_PATH" --key "ARCHIVE_UPLOAD_GCLOUD_SERVICE_ACCOUNT_$ENV" --value "$SHARED_CORE_STORAGE_ADMIN_SERVICE_ACCOUNT"
+"$SET_ENV_SCRIPT_PATH" --key "ARCHIVE_UPLOAD_GOOGLE_BUCKET_NAME_$ENV" --value "$ARCHIVE_REPO_BUCKET_NAME"
+"$SET_ENV_SCRIPT_PATH" --key "ARCHIVE_UPLOAD_GOOGLE_PROJECT_ID_$ENV" --value "$SHARED_CORE_PROJECT"
+
+# Gallery Profile API
+export GITHUB_REPO=gallery-profile-api
+"$SET_ENV_SCRIPT_PATH" --key "HELM_REPO_GCLOUD_SERVICE_ACCOUNT_$ENV" --value "$SHARED_CORE_STORAGE_ADMIN_SERVICE_ACCOUNT"
+"$SET_ENV_SCRIPT_PATH" --key "HELM_REPO_GOOGLE_BUCKET_NAME_$ENV" --value "$HELM_REPO_BUCKET_NAME"
+"$SET_ENV_SCRIPT_PATH" --key "HELM_REPO_GOOGLE_PROJECT_ID_$ENV" --value "$SHARED_CORE_PROJECT"
+
+# Falcon GraphQL server
+export GITHUB_REPO=falcon-hatchling-graphql-server
+"$SET_ENV_SCRIPT_PATH" --key "HELM_REPO_GCLOUD_SERVICE_ACCOUNT_$ENV" --value "$SHARED_CORE_STORAGE_ADMIN_SERVICE_ACCOUNT"
+"$SET_ENV_SCRIPT_PATH" --key "HELM_REPO_GOOGLE_BUCKET_NAME_$ENV" --value "$HELM_REPO_BUCKET_NAME"
+"$SET_ENV_SCRIPT_PATH" --key "HELM_REPO_GOOGLE_PROJECT_ID_$ENV" --value "$SHARED_CORE_PROJECT"
+
+
+# Storage proxy
+export GITHUB_REPO=presentation-dotcom-storage-proxy
+"$SET_ENV_SCRIPT_PATH" --key "HELM_REPO_GCLOUD_SERVICE_ACCOUNT_$ENV" --value "$SHARED_CORE_STORAGE_ADMIN_SERVICE_ACCOUNT"
+"$SET_ENV_SCRIPT_PATH" --key "HELM_REPO_GOOGLE_BUCKET_NAME_$ENV" --value "$HELM_REPO_BUCKET_NAME"
+"$SET_ENV_SCRIPT_PATH" --key "HELM_REPO_GOOGLE_PROJECT_ID_$ENV" --value "$SHARED_CORE_PROJECT"
